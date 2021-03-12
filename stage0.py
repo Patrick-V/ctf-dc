@@ -2,7 +2,7 @@ import requests
 import json
 from pprint import pprint
 
-from utils.auth import IntersightAuth, get_authenticated_aci_session
+from utils.auth import IntersightAuth
 from env import config
 
 auth=IntersightAuth(secret_key_filename=config['INTERSIGHT_CERT'],
