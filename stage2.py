@@ -14,10 +14,16 @@ def get_health_score():
     response = aci_session.get(f"{config['ACI_BASE_URL']}/api/class/fabricHealthTotal.json")
     response.raise_for_status()
 
-    return response.json()['imdata'][0]['fabricHealthTotal']['attributes']['cur'], response.json()['imdata'][0]['fabricHealthTotal']['attributes']['maxSev']
+    return response.json()['imdata']
 
 if __name__ == '__main__':
-    fabric_health_score, fabric_maximum_severity = get_health_score()
-    
+    health_score = get_health_score()
 
-        
+    with open('output.csv','w') as file:
+        for element in health_score:
+            fabric_health_score = element['fabricHealthTotal']['attributes']['cur']
+            fabric_maximum_severity = element['fabricHealthTotal']['attributes']['maxSev']
+            timestamp = element['fabricHealthTotal']['attributes']['modTs']
+            file.write(f"{fabric_health_score}, {fabric_maximum_severity}, {timestamp}\n")
+
+        file.close()
