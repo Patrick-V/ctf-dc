@@ -1,7 +1,3 @@
-#TODO Write the health score information into a comma-separated text file with the timestamp of the request included. Each entry in that .csv file should include
-#   The timestamp
-#   The total health score
-#   The maximum severity
 import requests
 from env import config
 from utils.auth import IntersightAuth, get_authenticated_aci_session
