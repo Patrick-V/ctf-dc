@@ -1,7 +1,3 @@
-# Extract from Intersight API:
-
-# TODO Overivew of deployments running in the kubernetes cluster. Count the number of deployments.
-
 import requests
 import json
 from pprint import pprint
@@ -84,12 +80,3 @@ if __name__ == '__main__':
     pprint(get_overview_running_kubernetes(), indent=4)
 
     print(f"There are {get_count_running_deployments_kubernetes()} deployments running in the Kubernetes cluster.")
-
-
-
-
-    
-
-
-    
-    
